@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 use time::OffsetDateTime;
 use uuid::Uuid;
 
@@ -26,8 +27,7 @@ pub struct CreatePolicyRequestDto {
     #[serde(default)]
     pub notify: Option<NotificationEventDto>,
     #[serde(default)]
-    pub rules: serde_json::Value,
-}
+    pub rules: Value,
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PolicyResponseDto {
