@@ -1,7 +1,7 @@
 use serde_repr::{Deserialize_repr, Serialize_repr};
 
 /// Lifecycle events that can trigger notifications (wire-encoded as u8).
-#[derive(Clone, Copy, Debug, Serialize_repr, Deserialize_repr, PartialEq, Eq)]
+#[derive(Clone, Debug, Serialize_repr, Deserialize_repr, PartialEq, Eq)]
 #[repr(u8)]
 pub enum JobEvent {
     Queued = 1,
@@ -12,7 +12,7 @@ pub enum JobEvent {
 }
 
 /// Webhook target kinds (wire-encoded as u8).
-#[derive(Clone, Copy, Debug, Serialize_repr, Deserialize_repr, PartialEq, Eq)]
+#[derive(Clone, Debug, Serialize_repr, Deserialize_repr, PartialEq, Eq)]
 #[repr(u8)]
 pub enum WebhookType {
     Slack = 1,

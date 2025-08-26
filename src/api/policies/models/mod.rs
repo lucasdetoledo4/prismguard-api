@@ -1,8 +1,9 @@
 pub mod policy;
-pub mod notifications;
+pub mod notification;
 
 
-pub use policy::{Policy};
-pub use notifications::{
-    NotificationEvent, WebhookEndpoint
+pub use policy::Policy;
+pub use notification::{
+    Notify, 
+    Webhook,
 };

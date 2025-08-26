@@ -3,31 +3,17 @@ use serde_json::Value;
 use time::OffsetDateTime;
 use uuid::Uuid;
 
-use super::enums::{JobEvent, WebhookType};
+use crate::api::policies::models::{Notify};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct WebhookEndpointDto {
-    pub kind: WebhookType,
-    pub url: String,
-    pub secret: Option<String>,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct NotificationEventDto {
-    #[serde(default)]
-    pub on: Vec<JobEvent>,
-    #[serde(default)]
-    pub targets: Vec<WebhookEndpointDto>,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct CreatePolicyRequestDto {
+pub struct CreatePolicyDto {
     pub name: String,
     pub prompt: String,
     #[serde(default)]
-    pub notify: Option<NotificationEventDto>,
+    pub notify: Option<Notify>,
     #[serde(default)]
     pub rules: Value,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PolicyResponseDto {
@@ -35,7 +21,7 @@ pub struct PolicyResponseDto {
     pub name: String,
     pub prompt: String,
     pub rules: serde_json::Value,
-    pub notify: Option<NotificationEventDto>,
+    pub notify: Option<Notify>,
     pub created_at: OffsetDateTime,
     pub updated_at: OffsetDateTime,
 }
